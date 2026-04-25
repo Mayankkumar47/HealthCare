@@ -2,6 +2,9 @@
 
 A modern and responsive Patient Management Dashboard UI designed to visualize patient data, diagnosis history, and health metrics in a clean and user-friendly interface.
 
+📸 Preview
+![Dashboard Preview](assets/screenshot.png)
+
 ✨ Overview
 
 This project demonstrates a real-world healthcare dashboard where users can:
@@ -26,10 +29,6 @@ The UI is designed with a focus on clarity, usability, and modern design princip
 HTML5 – Structure
 CSS3 – Styling & Layout
 JavaScript (Vanilla JS) – Functionality
-📸 Preview
-![Dashboard Preview](assets/screenshot.png)
-
-
 
 📂 Project Structure
 Patient/
@@ -46,7 +45,6 @@ cd HealthCare
 3. Run the project
 
 Open index.html in your browser
-
 
 
 🎯 Future Improvements
