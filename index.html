@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Healthcare Dashboard</title>
+  
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<div id="loader">
+  <div class="spin"></div>
+  <p>Loading patient data…</p>
+</div>
+
+<header class="topnav">
+  <a href="#" class="nav-logo">
+    <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect width="40" height="40" rx="11" fill="#01F0D0"/>
+      <rect x="17" y="8" width="6" height="24" rx="3" fill="#072635"/>
+      <rect x="8" y="17" width="24" height="6" rx="3" fill="#072635"/>
+    </svg>
+    Healthcare.
+  </a>
+
+  <ul class="nav-links">
+    <li>
+      <a href="#">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/>
+          <rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/>
+        </svg>
+        Overview
+      </a>
+    </li>
+    <li>
+      <a href="#" class="active">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+          <circle cx="9" cy="7" r="4"/>
+          <path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+        </svg>
+        Patients
+      </a>
+    </li>
+    <li>
+      <a href="#">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/>
+          <line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/>
+        </svg>
+        Schedule
+      </a>
+    </li>
+    <li>
+      <a href="#">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+        </svg>
+        Message
+      </a>
+    </li>
+    <li>
+      <a href="#">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+        </svg>
+        Transactions
+      </a>
+    </li>
+  </ul>
+
+  <div class="nav-end">
+    <div class="nav-doctor">
+      <img src="https://i.pravatar.cc/80?img=33" alt="Dr. Jose Simmons" />
+      <div class="nav-doctor-text">
+        <div class="name">Dr. Jose Simmons</div>
+        <div class="role">General Practitioner</div>
+      </div>
+    </div>
+    <div class="nav-sep"></div>
+    <button class="icon-btn" title="Settings">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="12" r="3"/>
+        <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/>
+      </svg>
+    </button>
+    <button class="icon-btn" title="More options">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+        <circle cx="12" cy="5" r="1" fill="currentColor"/><circle cx="12" cy="12" r="1" fill="currentColor"/><circle cx="12" cy="19" r="1" fill="currentColor"/>
+      </svg>
+    </button>
+  </div>
+</header>
+
+<main class="layout">
+  <div class="card patients-card">
+    <div class="patients-head">
+      <h2>Patients</h2>
+      <button class="icon-btn" title="Search">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+        </svg>
+      </button>
+    </div>
+    <div class="patients-scroll" id="patientsList"></div>
+  </div>
+
+  <div class="center-col">
+    <div class="card bp-card">
+      <div class="bp-topbar">
+        <h2>Diagnosis History</h2>
+        <button class="period-select" id="periodBtn">
+          Last 6 months
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="6 9 12 15 18 9"/>
+          </svg>
+        </button>
+      </div>
+      <div class="bp-body">
+        <div class="chart-wrap">
+          <canvas id="bpChart"></canvas>
+        </div>
+        <div class="bp-stats">
+          <div class="bp-stat">
+            <div class="bp-stat-label"><span class="dot dot-sys"></span> Systolic</div>
+            <div class="bp-val" id="sysVal">—</div>
+            <div class="bp-trend" id="sysTrend">
+              <svg viewBox="0 0 10 10" fill="none"><polyline points="0,8 5,2 10,8" stroke="currentColor" stroke-width="1.5"/></svg>
+              <span>—</span>
+            </div>
+          </div>
+          <div class="bp-stat">
+            <div class="bp-stat-label"><span class="dot dot-dia"></span> Diastolic</div>
+            <div class="bp-val" id="diaVal">—</div>
+            <div class="bp-trend" id="diaTrend">
+              <svg viewBox="0 0 10 10" fill="none"><polyline points="0,2 5,8 10,2" stroke="currentColor" stroke-width="1.5"/></svg>
+              <span>—</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="vitals-grid">
+      <div class="vital vital-resp card">
+        <div class="vital-icon-wrap">
+          <svg viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M14 3v22M7 8c0-2.76 2.24-5 5-5s5 2.24 5 5c0 4-5 10-5 14C12 18 7 12 7 8z" stroke="#072635" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M4 13c-1.1 0-2 .9-2 2s.9 2 2 2h4M24 13c1.1 0 2 .9 2 2s-.9 2-2 2h-4" stroke="#072635" stroke-width="1.8" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div class="vital-lbl">Respiratory Rate</div>
+        <div class="vital-val" id="respVal">—</div>
+        <div class="vital-unit-lbl">bpm</div>
+        <div class="vital-unit-lbl" id="respStatus" style="margin-top:6px;color:#072635;font-weight:700">Normal</div>
+      </div>
+
+      <div class="vital vital-temp card">
+        <div class="vital-icon-wrap">
+          <svg viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M14 4v12.26A5 5 0 1 0 19 21a4.97 4.97 0 0 0-2-3.97V4a3 3 0 0 0-3-3z" stroke="#072635" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+            <line x1="14" y1="4" x2="18" y2="4" stroke="#072635" stroke-width="1.8" stroke-linecap="round"/>
+            <line x1="14" y1="8" x2="18" y2="8" stroke="#072635" stroke-width="1.8" stroke-linecap="round"/>
+            <line x1="14" y1="12" x2="18" y2="12" stroke="#072635" stroke-width="1.8" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div class="vital-lbl">Temperature</div>
+        <div class="vital-val" id="tempVal">—</div>
+        <div class="vital-unit-lbl">°F</div>
+        <div class="vital-unit-lbl" id="tempStatus" style="margin-top:6px;color:#072635;font-weight:700">Normal</div>
+      </div>
+
+      <div class="vital vital-heart card">
+        <div class="vital-icon-wrap">
+          <svg viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M14 24s-10-6.5-10-12.5A6.5 6.5 0 0 1 14 7.5a6.5 6.5 0 0 1 10 4A6.5 6.5 0 0 1 14 24z" stroke="#072635" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+            <polyline points="4,15 8,12 11,17 14,10 17,14 20,12 24,15" stroke="#072635" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <div class="vital-lbl">Heart Rate</div>
+        <div class="vital-val" id="heartVal">—</div>
+        <div class="vital-unit-lbl">bpm</div>
+        <div class="vital-unit-lbl" id="heartStatus" style="margin-top:6px;color:#072635;font-weight:700">Normal</div>
+      </div>
+    </div>
+
+    <div class="card diag-card">
+      <div class="diag-head">Diagnostic List</div>
+      <table class="diag-table">
+        <thead>
+          <tr>
+            <th>Problem/Diagnosis</th>
+            <th>Description</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody id="diagTableBody">
+          <tr><td colspan="3" style="padding:20px;color:var(--muted);text-align:center">Loading…</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="right-col">
+    <div class="card profile-card">
+      <img id="profileImg" src="https://placehold.co/100x100" alt="Patient" />
+      <div class="profile-name" id="profileName">—</div>
+      <div class="profile-rows">
+        <div class="prow">
+          <div class="prow-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/>
+              <line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/>
+            </svg>
+          </div>
+          <div>
+            <div class="prow-label">Date Of Birth</div>
+            <div class="prow-val" id="profDob">—</div>
+          </div>
+        </div>
+        <div class="prow">
+          <div class="prow-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/>
+              <line x1="17" y1="11" x2="22" y2="11"/><line x1="19.5" y1="8.5" x2="19.5" y2="13.5"/>
+            </svg>
+          </div>
+          <div>
+            <div class="prow-label">Gender</div>
+            <div class="prow-val" id="profGender">—</div>
+          </div>
+        </div>
+        <div class="prow">
+          <div class="prow-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.63 3.36 2 2 0 0 1 3.6 1.18h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 8.96a16 16 0 0 0 6 6l.94-.94a2 2 0 0 1 2.11-.45c.9.36 1.85.6 2.81.7A2 2 0 0 1 21.73 16.5"/>
+            </svg>
+          </div>
+          <div>
+            <div class="prow-label">Contact Info.</div>
+            <div class="prow-val" id="profPhone">—</div>
+          </div>
+        </div>
+        <div class="prow">
+          <div class="prow-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.63 3.36 2 2 0 0 1 3.6 1.18h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 8.96a16 16 0 0 0 6 6l.94-.94a2 2 0 0 1 2.11-.45c.9.36 1.85.6 2.81.7A2 2 0 0 1 21.73 16.5"/>
+            </svg>
+          </div>
+          <div>
+            <div class="prow-label">Emergency Contacts</div>
+            <div class="prow-val" id="profEmergency">—</div>
+          </div>
+        </div>
+        <div class="prow">
+          <div class="prow-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+            </svg>
+          </div>
+          <div>
+            <div class="prow-label">Insurance Provider</div>
+            <div class="prow-val" id="profInsurance">—</div>
+          </div>
+        </div>
+      </div>
+      <button class="btn-show-all">Show All Information</button>
+    </div>
+
+    <div class="card lab-card">
+      <div class="lab-head">Lab Results</div>
+      <div id="labList"></div>
+    </div>
+  </div>
+</main>
+
+<script src="script.js"></script>
+</body>
+</html>
