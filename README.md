@@ -2,6 +2,9 @@
 
 A modern and responsive Patient Management Dashboard UI designed to visualize patient data, diagnosis history, and health metrics in a clean and user-friendly interface.
 
+## 🌐 Live Preview (GitHub Pages)
+> Live at: https://mayankkumar47.github.io/HealthCare/
+
 📸 Preview
 ![Dashboard Preview](assets/screenshot.png)
 
