@@ -39,7 +39,7 @@ Patient/
 │   └── screenshot.png  
 ⚙️ Getting Started
 1. Clone the repository
-git clone https://github.com/your-username/HealthCare.git
+git clone https://github.com/Mayankkumar47/HealthCare.git
 2. Navigate to project folder
 cd HealthCare
 3. Run the project
